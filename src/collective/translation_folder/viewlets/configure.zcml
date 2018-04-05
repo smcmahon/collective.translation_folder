@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.translation_folder"
+    >
+
+    <browser:viewlet
+      name="translationsavailable"
+      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+      class=".content.TranslationsAvailableViewlet"
+      template="content.pt"
+      layer="collective.translation_folder.interfaces.ICollectiveTranslationFolderLayer"
+      permission="zope2.View"
+      />
+
+</configure>

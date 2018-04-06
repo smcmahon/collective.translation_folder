@@ -1,42 +1,30 @@
-.. This README is meant for consumption by humans and pypi. Pypi can render rst files so please do not use Sphinx features.
-   If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
-   This text does not appear on pypi or github. It is a comment.
-
 =============================
 collective.translation_folder
 =============================
 
-Tell me what your product does
+plone.app.multilingual is what you want if you're translating a whole site.
+If you're only translating a portion of the content, this package may help organize it and present it to users.
+
 
 Features
 --------
 
-- Can be bullet points
+The scheme is that you mark a folder as containing multiple translations of the same content item.
+That option appears on the ``settings`` tab of eligible folderish items.
+One of those content items will probably be the default content item for the folder, and it will probably be in your site's default language.
+Translated content items should have their language set in the ``categorization`` tab.
 
+Now, when one of the translated content items (including the default) is displayed, a viewlet above the title will provide links to all of the alternative translations.
 
-Examples
---------
+When a translation folder is inside another folder, if you use the ``summary`` listing, the listing for the translation folder will include links to the alternative translations.
 
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
-
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
 
 
 Installation
 ------------
+
+This package only works with Plone 5.1.
+If it's successful, we'll keep git branches for various Plone versions.
 
 Install collective.translation_folder by adding it to your buildout::
 
@@ -50,20 +38,23 @@ Install collective.translation_folder by adding it to your buildout::
 
 and then running ``bin/buildout``
 
+Use the "Add ons" site setup configlet to add it to a site.
+
+Then, go to the "Dexterity content types" configlet and add it as a behavior to any folderish Dexterity content type for which you want to offer this option.
+That may be just the ``folder`` content type.
+
 
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/collective/collective.translation_folder/issues
-- Source Code: https://github.com/collective/collective.translation_folder
-- Documentation: https://docs.plone.org/foo/bar
+- Issue Tracker: https://github.com/smcmahon/collective.translation_folder/issues
+- Source Code: https://github.com/smcmahon/collective.translation_folder
 
 
 Support
 -------
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+If you are having issues, leave a message on the Plone community board.
 
 
 License

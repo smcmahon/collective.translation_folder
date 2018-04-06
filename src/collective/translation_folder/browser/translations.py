@@ -2,11 +2,17 @@
 from plone import api
 from Products.CMFPlone.defaultpage import get_default_page
 from Products.Five import BrowserView
+from zope.i18nmessageid import MessageFactory
+
+_ = MessageFactory('collective.translation_folder')
 
 
 class TranslationsAvailableView(BrowserView):
     """ Show available translations for this content
     """
+
+    def translations_available_text(self):
+        return _(u'Translations available:')
 
     def site_language(self):
         return api.portal.get_default_language()

@@ -17,7 +17,7 @@
     class=".translations.TranslationsAvailableView"
     permission="zope2.View"
     layer="collective.filterednav.interfaces.ICollectiveFilterednavLayer"
-    allowed_attributes="item_children"
+    allowed_attributes="item_children translations_available_text"
     />
 
 </configure>

@@ -1,0 +1,64 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-04-06 21:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.translation_folder\n"
+
+#: ../configure.zcml:43
+msgid "Allows marking of a folder as containing multiple translations of the same content."
+msgstr ""
+
+#: ../configure.zcml:43
+msgid "Folder may contain translations"
+msgstr ""
+
+#: ../configure.zcml:22
+msgid "Installs the collective.translation_folder add-on."
+msgstr ""
+
+#: ../behaviors.py:15
+msgid "Settings"
+msgstr ""
+
+#: ../viewlets/content.py:16
+msgid "Translations are available for this document:"
+msgstr ""
+
+#: ../browser/translations.py:15
+msgid "Translations available:"
+msgstr ""
+
+#: ../configure.zcml:31
+msgid "Uninstalls the collective.translation_folder add-on."
+msgstr ""
+
+#: ../configure.zcml:22
+msgid "collective.translation_folder"
+msgstr ""
+
+#: ../configure.zcml:31
+msgid "collective.translation_folder (uninstall)"
+msgstr ""
+
+#. Default: "Contains translations"
+#: ../behaviors.py:19
+msgid "help_contains_translations"
+msgstr ""
+
+#. Default: "If selected, marks this folder as containing multiple translations of the same content."
+#: ../behaviors.py:22
+msgid "help_contains_translations_description"
+msgstr ""

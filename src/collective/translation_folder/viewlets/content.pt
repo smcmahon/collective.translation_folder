@@ -1,7 +1,7 @@
 <div
     tal:define="translations view/translations_available"
     tal:condition="translations">
-    <h5>Translations are available for this document.</h5>
+    <h5 tal:content="view/translations_available_text">Translations are available for this document.</h5>
     <dl>
         <tal:block tal:repeat="tl translations">
             <dt tal:content="tl/lang_native" />

@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from plone.app.layout.viewlets import common as base
+from zope.i18nmessageid import MessageFactory
 
 import Acquisition
+
+_ = MessageFactory('collective.translation_folder')
 
 
 class TranslationsAvailableViewlet(base.ViewletBase):
     """ Show available translations for this content
     """
+
+    def translations_available_text(self):
+        return _(u'Translations are available for this document:')
 
     def my_type(self):
         """ what's my portal type?

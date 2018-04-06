@@ -40,7 +40,7 @@
             <div
                 tal:define="taview here/@@translations_available; translations python: taview.item_children(obj)"
                 tal:condition="translations">
-              Translations available:
+              <span tal:content="taview/translations_available_text" />
               <span tal:repeat="tl translations" class="item-translation-link">
                 <a tal:content="tl/lang_native" tal:attributes="href tl/url" />
                 <span tal:condition="not:repeat/tl/end">&#8226;</span>

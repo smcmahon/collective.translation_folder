@@ -31,12 +31,13 @@ class TranslationsAvailableView(BrowserView):
 
         results = api.content.find(context=obj)
         my_id = obj.id
-        default_page = get_default_page(obj)
-        if default_page is not None:
-            default_page_id = default_page.id
-            base_lang = self.item_language(default_page)
-        else:
-            default_page_id = None
+        base_lang = None
+        default_page_id = get_default_page(obj)
+        if default_page_id is not None:
+            default_page = obj.get(default_page_id)
+            if default_page is not None:
+                base_lang = self.item_language(default_page)
+        if base_lang is None:
             base_lang = self.item_language(obj)
         results = [
             r for r in results
@@ -53,28 +54,5 @@ class TranslationsAvailableView(BrowserView):
                     url=ro.absolute_url(),
                     lang_name=lang_info[u'name'],
                     lang_native=lang_info[u'native'],
-                ))
-        return sorted(rez, cmp_lang)
-
-    def translations_available(self):
-
-        def cmp_lang(a, b):
-            return cmp(a['lang_name'], b['lang_name'])
-
-        pl = api.portal.get_tool(name='portal_languages')
-        languages = pl.getAvailableLanguages()
-        sibs = [sib.getObject() for sib in self.my_siblings()]
-        my_language = self.my_language()
-        rez = []
-        for sib in sibs:
-            sib_language = self.item_language(sib)
-            lang_info = languages.get(sib_language, languages.get(self.site_language()))
-            if my_language != sib_language:
-                rez.append(dict(
-                    title=sib.Title(),
-                    lang_code=sib_language,
-                    lang_name=lang_info[u'name'],
-                    lang_native=lang_info[u'native'],
-                    url=sib.absolute_url(),
                 ))
         return sorted(rez, cmp_lang)

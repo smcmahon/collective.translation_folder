@@ -33,16 +33,20 @@
                tal:attributes="class python: 'tileImage' if item_description else 'tileImageNoFloat'">
             <a tal:attributes="href item_link">
               <img tal:replace="structure python:image_scale.tag(item, 'image', scale=thumb_scale_summary, css_class='thumb-' + thumb_scale_summary)" />
-
             </a>
           </div>
 
-          <div tal:condition="item/contains_translations | nothing">
-              <div tal:content="here/@@translations_available" />
-              <pre tal:define="taview here/@@translations_available">
-                <span tal:content="python: taview.item_children(obj)" />
-              </pre>
-          </div>
+          <tal:block tal:condition="item/contains_translations | nothing">
+            <div
+                tal:define="taview here/@@translations_available; translations python: taview.item_children(obj)"
+                tal:condition="translations">
+              Translations available:
+              <span tal:repeat="tl translations" class="item-translation-link">
+                <a tal:content="tl/lang_native" tal:attributes="href tl/url" />
+                <span tal:condition="not:repeat/tl/end">&#8226;</span>
+              </span>
+            </div>
+          </tal:block>
 
           <div class="tileBody" tal:condition="item_description">
             <span class="description" tal:content="item_description">

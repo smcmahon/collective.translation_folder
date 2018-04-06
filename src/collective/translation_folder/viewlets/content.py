@@ -38,7 +38,7 @@ class TranslationsAvailableViewlet(base.ViewletBase):
         parent = Acquisition.aq_parent(self.context)
         portal_type = context.portal_type
         my_id = context.id
-        sibs = api.content.find(context=parent, portal_type=portal_type)
+        sibs = api.content.find(context=parent, portal_type=portal_type, depth=1)
         return [s for s in sibs if s.id != my_id]
 
     def translations_available(self):

@@ -23,9 +23,11 @@ class TranslationsAvailableView(BrowserView):
     def item_children(self, obj):
         """ find translations among children of obj.
             Criteria:
-                * not default page
-                * not excluded from nav
-                * not in the language of the default page, folder, site
+                * if there is a default page, we look at content items of same type
+            Excluded automatically from results
+                * default page
+                * excluded from nav
+                * in the language of the default page, folder, site
         """
 
         def cmp_lang(a, b):
@@ -35,16 +37,21 @@ class TranslationsAvailableView(BrowserView):
         languages = pl.getAvailableLanguages()
         site_language_info = languages.get(self.site_language())
 
-        results = api.content.find(context=obj)
         my_id = obj.id
         base_lang = None
         default_page_id = get_default_page(obj)
+        default_page_type = None
         if default_page_id is not None:
             default_page = obj.get(default_page_id)
             if default_page is not None:
                 base_lang = self.item_language(default_page)
+                default_page_type = default_page.portal_type
         if base_lang is None:
             base_lang = self.item_language(obj)
+        if default_page_type is not None:
+            results = api.content.find(context=obj, portal_type=default_page_type, depth=1)
+        else:
+            results = api.content.find(context=obj, depth=1)
         results = [
             r for r in results
             if r.id not in (my_id, default_page_id) and not r.exclude_from_nav

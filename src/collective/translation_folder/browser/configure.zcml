@@ -2,20 +2,22 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="collective.translation_folder">
+    i18n_domain="collective.filterednav">
 
   <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
   <include package="z3c.jbot" file="meta.zcml" />
   <browser:jbot
       directory="overrides"
-      layer="collective.translation_folder.interfaces.ICollectiveTranslationFolderLayer"
+      layer="collective.filterednav.interfaces.ICollectiveFilterednavLayer"
       />
 
-  <!-- Publish static files -->
-  <plone:static
-      name="collective.translation_folder"
-      type="plone"
-      directory="static"
-      />
+  <browser:page
+    name="translations_available"
+    for="*"
+    class=".translations.TranslationsAvailableView"
+    permission="zope2.View"
+    layer="collective.filterednav.interfaces.ICollectiveFilterednavLayer"
+    allowed_attributes="item_children"
+    />
 
 </configure>
